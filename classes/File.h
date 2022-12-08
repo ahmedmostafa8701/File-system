@@ -27,7 +27,8 @@ public:
         secondaryIndexDepartmentID = "C:\\Users\\Dell\\Desktop\\FileAssignmet\\Indexes\\Secondary_Index_DepartmentID.txt";
         secondaryIndexDepartmentName = "C:\\Users\\Dell\\Desktop\\FileAssignmet\\Indexes\\Secondary_Index_DepartmentName.txt";
         secondaryDeptIDList = "C:\\Users\\Dell\\Desktop\\FileAssignmet\\secondaryIndexList\\SecondaryDeptIDList.txt";
-        dirs = {"C:\\Users\\Dell\\Desktop\\FileAssignmet\\DataFiles",
+        dirs = {"C:\\Users\\Dell\\Desktop\\FileAssignmet",
+                "C:\\Users\\Dell\\Desktop\\FileAssignmet\\DataFiles",
                 "C:\\Users\\Dell\\Desktop\\FileAssignmet\\secondaryIndexList",
                 "C:\\Users\\Dell\\Desktop\\FileAssignmet\\Indexes"};
         files = {employeeDateFile, departmentDataFile, secondaryDeptNameList, primaryIndexEmployeeID,
