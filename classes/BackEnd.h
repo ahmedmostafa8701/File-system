@@ -72,20 +72,20 @@ public:
         for (int i = 0; i < p.first.size(); i++) {
             p.first[i].erase(p.first[i].find_last_not_of(" \n\r\t")+1);
             if(p.first[i] == employee_ID){
-                Indexing::deletePrimaryIndex(p.second[i], file.secondaryDeptIDList);
+/*                Indexing::deletePrimaryIndex(p.second[i], file.secondaryDeptIDList);*/
                 if(i > 0 && i < p.first.size() - 1){
                     pair<string, int> prev = {p.first[i - 1], p.second[i - 1]};
                     pair<string, int> after = {p.first[i + 1], p.second[i + 1]};
                     Index pIndex(prev.first, to_string(after.second));
                     pIndex.writeToFile(file.secondaryDeptIDList, prev.second, utilities.INDEXRECORDSIZE);
                 }
-                else if(i == p.first.size()){
+                else if(p.first.size() == 1){
+                    Indexing::deletePrimaryIndex(employee->getDeptId(), file.secondaryIndexDepartmentID);
+                }
+                else if(i == p.first.size() - 1){
                     pair<string, int> prev = {p.first[i - 1], p.second[i - 1]};
                     Index pIndex(prev.first, to_string(-1));
                     pIndex.writeToFile(file.secondaryDeptIDList, prev.second, utilities.INDEXRECORDSIZE);
-                }
-                else if(p.first.size() == 1){
-                    Indexing::deletePrimaryIndex(employee->getDeptId(), file.secondaryIndexDepartmentID);
                 }
                 else{
                     pair<string, int> after = {p.first[i + 1], p.second[i + 1]};
@@ -126,20 +126,20 @@ public:
         for (int i = 0; i < p.first.size(); i++) {
             p.first[i].erase(p.first[i].find_last_not_of(" \n\r\t")+1);
             if(p.first[i] == dept_ID){
-                Indexing::deletePrimaryIndex(p.second[i], file.secondaryDeptNameList);
+                /*Indexing::deletePrimaryIndex(p.second[i], file.secondaryDeptNameList);*/
                 if(i > 0 && i < p.first.size() - 1){
                     pair<string, int> prev = {p.first[i - 1], p.second[i - 1]};
                     pair<string, int> after = {p.first[i + 1], p.second[i + 1]};
                     Index pIndex(prev.first, to_string(after.second));
                     pIndex.writeToFile(file.secondaryDeptNameList, prev.second, utilities.INDEXRECORDSIZE);
                 }
-                else if(i == p.first.size()){
+                else if(p.first.size() == 1){
+                    Indexing::deletePrimaryIndex(department->getDeptName(), file.secondaryIndexDepartmentName);
+                }
+                else if(i == p.first.size() - 1){
                     pair<string, int> prev = {p.first[i - 1], p.second[i - 1]};
                     Index pIndex(prev.first, to_string(-1));
                     pIndex.writeToFile(file.secondaryDeptNameList, prev.second, utilities.INDEXRECORDSIZE);
-                }
-                else if(p.first.size() == 1){
-                    Indexing::deletePrimaryIndex(department->getDeptName(), file.secondaryIndexDepartmentName);
                 }
                 else{
                     pair<string, int> after = {p.first[i + 1], p.second[i + 1]};
