@@ -55,9 +55,9 @@ public:
         dept_manager = deptManager;
     }
     friend ostream& operator<<(ostream &out, const Department &department){
-        out << "department ID: " << department.dept_ID << " "
-            << "department name: " << department.dept_name << " "
-            << "department manager: " << department.dept_manager << "\n";
+        out << "department ID: " << department.dept_ID << "\n"
+            << "department name: " << department.dept_name << "\n"
+            << "department manager: " << department.dept_manager << "\n***********************\n";
         return out;
     }
     friend istream& operator>>(istream &in, Department &department){

@@ -21,6 +21,14 @@ public:
 
     // 1 add new employee
     void add_new_employee(Employee tmp_emp){
+        if(getEmployeeByID(tmp_emp.getEmployeeId()).first != NULL){
+            cout << "This Id is already exist\n";
+            return;
+        }
+        if(getDepartmentWithId(tmp_emp.getDeptId()).first == NULL){
+            cout << "This department isn't exist\n";
+            return;
+        }
         string pos = AvailList::addFirstFit(&tmp_emp, file.employeeDateFile);
         Index primary(tmp_emp.getEmployeeId(), pos);
         Index secondaryIndex(tmp_emp.getDeptId(), tmp_emp.getEmployeeId());
@@ -30,6 +38,10 @@ public:
 
     // 2 add new department
     void add_new_department(Department tmp_dept){
+        if(getDepartmentWithId(tmp_dept.getDeptId()).first != NULL){
+            cout << "This Id is already exist\n";
+            return;
+        }
         string pos = AvailList::addFirstFit(&tmp_dept, file.departmentDataFile);
         Index primary(tmp_dept.getDeptId(), pos);
         Index secondary(tmp_dept.getDeptName(), tmp_dept.getDeptId());
@@ -310,7 +322,7 @@ public:
             return;
         }
     }
-    static void trans(string s){
+    static void trans(string &s){
         transform(s.begin(), s.end(), s.begin(), ::tolower);
     }
 };

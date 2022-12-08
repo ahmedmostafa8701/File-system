@@ -69,10 +69,10 @@ public:
         employee_position = employeePosition;
     }
     friend ostream& operator<<(ostream &out, const Employee &employee){
-        out << "Employee ID: " << employee.employee_ID << " "
-            << "Employee name: " << employee.employee_name << " "
-            << "Employee position: " << employee.employee_position << " "
-            << "Department ID: " << employee.dept_ID << "\n";
+        out << "Employee ID: " << employee.employee_ID << "\n"
+            << "Employee name: " << employee.employee_name << "\n"
+            << "Employee position: " << employee.employee_position << "\n"
+            << "Department ID: " << employee.dept_ID << "\n***********************\n";
         return out;
     }
     friend istream& operator>>(istream &in, Employee &employee){
