@@ -39,6 +39,7 @@ public:
 
     // 3 delete employee (ID)
     void delete_employee_ID(string employee_ID){
+        employee_ID.erase(employee_ID.find_last_not_of(" \n\r\t")+1);
         Utilities utilities;
         pair<Employee *, int> res = getEmployeeByID(employee_ID);
         Employee *employee = res.first;
@@ -94,6 +95,12 @@ public:
         if(department == nullptr){
             cout << "not found" << endl;
             return;
+        }
+        pair<vector<string>, vector<int> > p2 = Indexing::searchSecondaryIndex(department->getDeptId(),
+                                                                               file.secondaryIndexDepartmentID,
+                                                                               file.secondaryDeptIDList);
+        for (int i = 0; i < p2.first.size(); i++) {
+            delete_employee_ID(p2.first[i]);
         }
         int rrn = Header::getRRN(file.departmentDataFile);
         Deleted deleted('*', '|', department->out().length(), rrn);
